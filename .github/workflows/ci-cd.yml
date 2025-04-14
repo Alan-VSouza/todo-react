@@ -6,7 +6,7 @@ on:
       - main 
   pull_request:
     branches:
-      - main 
+      - main  
 
 jobs:
   backend:
@@ -23,20 +23,19 @@ jobs:
 
       - name: Install backend dependencies
         run: |
-          cd server 
-          npm install  
+          cd server  # Vai para o diretório do backend
+          npm install  # Instala as dependências do backend
 
       - name: Run backend tests
         run: |
-          cd server  
-          npm test 
-
+          cd server  # Vai para o diretório do backend
+          npm test  # Executa os testes do backend (Jest)
   frontend:
     runs-on: ubuntu-latest  
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2  
+        uses: actions/checkout@v2 
 
       - name: Set up Node.js for React
         uses: actions/setup-node@v2
@@ -45,10 +44,10 @@ jobs:
 
       - name: Install frontend dependencies
         run: |
-          cd client  
-          npm install  
+          cd client  # Vai para o diretório do frontend
+          npm install  # Instala as dependências do frontend
 
       - name: Run frontend tests
         run: |
-          cd client 
-          npm test 
+          cd client  # Vai para o diretório do frontend
+          npm test  # Executa os testes do frontend
