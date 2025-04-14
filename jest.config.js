@@ -4,7 +4,7 @@ module.exports = {
       '^.+\\.js$': 'babel-jest', 
     },
     transformIgnorePatterns: [
-      '/node_modules/(?!bson|mongoose)',  
+      '/node_modules/(?!bson|mongoose|other-dependencies)', 
     ],
   };
   
