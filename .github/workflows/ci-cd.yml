@@ -14,21 +14,25 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+
       - name: Install backend dependencies
         run: |
-          cd server
-          npm install
+          cd server  
+          npm install  
+
       - name: Set environment to test
         run: |
           echo "NODE_ENV=test" >> $GITHUB_ENV
+
       - name: Run backend tests
         run: |
-          cd server
-          npm test
+          cd server  
+          npm test 
 
   frontend:
     runs-on: ubuntu-latest
