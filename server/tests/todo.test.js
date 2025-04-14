@@ -1,5 +1,6 @@
 const request = require('supertest');
 const app = require('../server');  
+const mongoose = require('mongoose');
 
 describe('Todo API', () => {
   let todoId;
@@ -33,8 +34,8 @@ describe('Todo API', () => {
   it('should return 404 if todo is not found on delete', async () => {
     const response = await request(app)
       .delete('/api/todos/3647889');  
-    
-    expect(response.status).toBe(500);
+
+    expect(response.status).toBe(500);  
     expect(response.body.message).toBe('Erro ao excluir');
   });
 });
