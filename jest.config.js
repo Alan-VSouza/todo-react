@@ -1,9 +1,10 @@
 module.exports = {
-    testEnvironment: 'node',  
-    roots: ['<rootDir>/server/tests'], 
+    testEnvironment: 'node', 
     transform: {
       '^.+\\.js$': 'babel-jest', 
     },
-    testMatch: ['**/*.test.js'], 
+    transformIgnorePatterns: [
+      '/node_modules/(?!bson|mongoose)',  
+    ],
   };
   
