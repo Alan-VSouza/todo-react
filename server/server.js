@@ -7,10 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/todoapp', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+if (process.env.NODE_ENV !== 'test') {
+  mongoose.connect('mongodb://localhost:27017/todoapp', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+}
 
 app.use('/api/todos', todoRoutes);
 

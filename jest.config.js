@@ -1,7 +1,7 @@
 module.exports = {
-    testEnvironment: 'node', 
+    testEnvironment: 'node',
     transform: {
-      '^.+\\.js$': 'babel-jest', 
+      '^.+\\.js$': 'babel-jest',
     },
     transformIgnorePatterns: [
       '/node_modules/(?!bson|mongoose|other-dependencies)', 
