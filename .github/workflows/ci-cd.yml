@@ -3,7 +3,7 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - main 
+      - main
   pull_request:
     branches:
       - main  
@@ -12,6 +12,11 @@ jobs:
   backend:
     runs-on: ubuntu-latest 
 
+    services:
+      mongo:
+        image: mongo:latest
+        options: --health-cmd="curl --silent --fail localhost:27017" --health-interval=30s --health-timeout=30s --health-retries=3
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v2  
@@ -19,17 +24,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16' 
+          node-version: '14'
 
       - name: Install backend dependencies
         run: |
           cd server 
-          npm install  
+          npm install 
 
       - name: Run backend tests
         run: |
           cd server  
-          npm test 
+          npm test  
 
   frontend:
     runs-on: ubuntu-latest  
@@ -41,12 +46,12 @@ jobs:
       - name: Set up Node.js for React
         uses: actions/setup-node@v2
         with:
-          node-version: '16' 
+          node-version: '14'
 
       - name: Install frontend dependencies
         run: |
-          cd client  
-          npm install 
+          cd client
+          npm install
 
       - name: Run frontend tests
         run: |
